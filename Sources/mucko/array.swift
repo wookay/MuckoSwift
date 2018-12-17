@@ -8,7 +8,6 @@
 
 import Foundation
 
-public func join(_ arr: [String], _ dlm: String = "") -> String {
-    return arr.joined(separator: dlm)
+public func join<S: Sequence>(_ arr: S, _ dlm: String = "") -> String {
+    return arr.map{ x in String(x) }.joined(separator: dlm)
 }
-
