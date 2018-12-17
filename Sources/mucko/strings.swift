@@ -23,21 +23,14 @@ extension String {
 }
 
 public func string(_ args: Any...) -> String {
-    return args.map{ x in String(x) }.joined(separator: "")
+    return args.map{ x in String(describing: x) }.joined(separator: "")
 }
 
-public func isa(_ a: Any, _ typ: Any.Type) -> Bool {
-    return type(of: a) == typ
-}
-
+// repr
 public func repr(_ obj: Any?) -> String {
     if let x = obj {
         return string(x)
     } else {
         return "nil"
     }
-}
-
-public func repr(_ obj: [String]) -> String {
-    return string(obj)
 }

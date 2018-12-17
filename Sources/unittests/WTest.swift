@@ -59,6 +59,16 @@ public class Assertion {
             }
         }
     }
+    
+    public func equal(_ value1: Any.Type, _ value2: Any.Type, _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
+        _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
+            if value1 == value2 {
+                return .success
+            } else {
+                return .expectedFailure(string(repr(value1), " != ", repr(value2)))
+            }
+        }
+    }
 }
 
 public let Assert = Assertion()
