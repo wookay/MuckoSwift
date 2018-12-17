@@ -40,10 +40,13 @@ public class UnitTest {
     static var errors: Int = 0
 
     class func run<T: WTestCase>(only: [T.Type]) -> TestResult {
-        let escape = "\u{001B}["
-        let ansi_red    = escape + "0;31m"
-        let ansi_green  = escape + "0;32m"
-        let ansi_reset  = escape + "0m"
+        let _ = "\u{001B}["
+        let ansi_red    = ""
+        let ansi_green  = ""
+        let ansi_reset  = ""
+//        let ansi_red    = escape + "0;31m"
+//        let ansi_green  = escape + "0;32m"
+//        let ansi_reset  = escape + "0m"
         
         let started_at = Date()
         print("Started")
@@ -65,10 +68,10 @@ public class UnitTest {
         print(String(format: "Finished in %.3g seconds.", elapsed))
         if failed > 0 {
             print(ansi_red)
-            print(String(repeating: "🚨", count: failed) + " ", terminator: "")
+            print(string(String(repeating: "🚨", count: failed), "  "), terminator: "")
         } else if passed > 0 {
             print(ansi_green)
-            print("✅ ", terminator: "")
+            print("✅  ", terminator: "")
         }
         print(String(format: "%d tests, %d assertions, %d failures, %d errors",
             tests, passed, failed, errors))
