@@ -26,6 +26,10 @@ public func string(_ args: Any...) -> String {
     return join(args)
 }
 
+public func string(_ args: Any?...) -> String {
+    return join(args)
+}
+
 // repr
 public func repr(_ obj: Any?) -> String {
     if let x = obj {
