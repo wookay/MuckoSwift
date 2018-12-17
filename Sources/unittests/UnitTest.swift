@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TestResult {
+public struct TestResult {
     var tests: Int
     var passed: Int
     var failed: Int
@@ -39,23 +39,19 @@ public class UnitTest {
     static var failed: Int = 0
     static var errors: Int = 0
 
-    class func run<T: WTestCase>(only: [T.Type]) -> TestResult {
-        let _ = "\u{001B}["
+    public class func report<S: Sequence>(_ list: S) -> TestResult {
         let ansi_red    = ""
         let ansi_green  = ""
         let ansi_reset  = ""
-//        let ansi_red    = escape + "0;31m"
-//        let ansi_green  = escape + "0;32m"
-//        let ansi_reset  = escape + "0m"
         
         let started_at = Date()
         print("Started")
-        for klass in only {
+        for klass in list {
             switch klass {
             case let classInst as NSObject.Type:
                 let instance = classInst.init()
                 XCTCurrentTestCase = instance as? WTestCase
-                for name in testMethods(class: klass) {
+                for name in testMethods(class: klass as! AnyClass) {
                     instance.perform(NSSelectorFromString(name))
                     tests += 1
                 }
@@ -81,7 +77,7 @@ public class UnitTest {
         return TestResult(tests: tests, passed: passed, failed: failed, errors: errors)
     }
     
-    public class func report<T: WTestCase>(_ list: [T.Type]) {
-        _ = run(only: list)
+    public class func run<S: Sequence>(_ list: S) {
+        _ = report(list)
     }
 }
