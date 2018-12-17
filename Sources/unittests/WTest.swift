@@ -22,13 +22,23 @@ open class WTestCase : WTestCaseProvider {
     }
     
     open func recordFailure(withDescription description: String, inFile filePath: String, function: String = #function, atLine lineNumber: Int, expected: Bool) {
-        print(string(description, "\n", "    ", function, " ", filePath, " ", "#", lineNumber))
+        let path = (filePath as NSString).abbreviatingWithTildeInPath
+        print(string(description, "\n", "    ", function, " ", path, " ", "#", lineNumber))
     }
 }
 
-
-
 public class Assertion {
+    public func True(_ expr: @autoclosure () throws -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
+        _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
+            let val = try expr()
+            if val {
+                return .success
+            } else {
+                return .expectedFailure(string("expr() is ", false))
+            }
+        }
+    }
+    
     public func equal<T: Equatable>(_ expression1: @autoclosure () throws -> T?, _ expression2: @autoclosure () throws -> T?, _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
         _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
             let (value1, value2) = (try expression1(), try expression2())
