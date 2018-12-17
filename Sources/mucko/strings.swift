@@ -23,13 +23,18 @@ extension String {
 }
 
 public func string(_ args: Any...) -> String {
-    return args.map{ x in String(describing: x) }.joined(separator: "")
+    return join(args)
 }
 
 // repr
 public func repr(_ obj: Any?) -> String {
     if let x = obj {
-        return string(x)
+        if isa(x, String.self) {
+            let quot = "\""
+            return string(quot, x, quot)
+        } else {
+            return string(x)
+        }
     } else {
         return "nil"
     }
