@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.source                = { :git => "https://github.com/wookay/MuckoSwift.git", :tag => s.version }
   s.source_files          = "Sources/common/**/*.swift", "Sources/*.h" 
-  s.ios.source_files      = "Sources/ios/*.swift"
+  s.ios.source_files      = "Sources/ios/*.{plist,swift}"
   s.osx.source_files      = "Sources/osx/*.swift"
   s.public_header_files   = "Sources/MuckoSwift.h"
   s.pod_target_xcconfig   = { 'SWIFT_VERSION' => '4.0' }
