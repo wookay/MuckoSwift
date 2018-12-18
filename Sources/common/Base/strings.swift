@@ -43,3 +43,7 @@ public func repr(_ obj: Any?) -> String {
         return "nil"
     }
 }
+
+public func isempty(_ arr: String) -> Bool {
+    return arr.count == 0
+}

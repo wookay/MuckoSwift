@@ -38,6 +38,16 @@ public class Assertion {
             }
         }
     }
+    public func False(_ expr: @autoclosure () throws -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
+        _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
+            let val = try expr()
+            if !val {
+                return .success
+            } else {
+                return .expectedFailure(string("expr() is ", true))
+            }
+        }
+    }
     
     public func equal<T: Equatable>(_ expression1: @autoclosure () throws -> T?, _ expression2: @autoclosure () throws -> T?, _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
         _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {

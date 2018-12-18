@@ -12,6 +12,6 @@ public func isa(_ a: Any, _ typ: Any.Type) -> Bool {
     return type(of: a) == typ
 }
 
-public func typeof<T>(_ a: T) -> T.Type {
+public func typeof<T>(_ a: T) -> Any.Type {
     return type(of: a)
 }
