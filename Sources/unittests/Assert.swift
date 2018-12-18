@@ -13,6 +13,10 @@
 //  XCTAssert.swift
 //
 
+func print_dot() {
+    print(".", terminator: "")
+}
+
 enum _XCTAssertion {
     case equal
     case equalWithAccuracy
@@ -94,6 +98,7 @@ func _XCTEvaluateAssertion(_ assertion: _XCTAssertion, message: @autoclosure () 
     switch result {
     case .success:
         UnitTest.passed += 1
+        print_dot()
         return
     default:
         UnitTest.failed += 1

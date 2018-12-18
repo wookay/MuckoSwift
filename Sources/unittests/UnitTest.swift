@@ -61,13 +61,13 @@ public class UnitTest {
         }
         
         let elapsed: Foundation.TimeInterval = -started_at.timeIntervalSinceNow
-        print(String(format: "Finished in %.3g seconds.", elapsed))
+        print(String(format: "\nFinished in %.3g seconds.", elapsed), terminator: "")
         if failed > 0 {
             print(ansi_red)
-            print(string(String(repeating: "🚨", count: failed), "  "), terminator: "")
+            print(string(String(repeating: "🚨", count: failed), " "), terminator: "")
         } else if passed > 0 {
             print(ansi_green)
-            print("✅  ", terminator: "")
+            print("✅ ", terminator: "")
         }
         print(String(format: "%d tests, %d assertions, %d failures, %d errors",
             tests, passed, failed, errors))

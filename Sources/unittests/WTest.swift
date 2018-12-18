@@ -23,7 +23,7 @@ open class WTestCase : WTestCaseProvider {
     
     open func recordFailure(withDescription description: String, inFile filePath: String, function: String = #function, atLine lineNumber: Int, expected: Bool) {
         let path = (filePath as NSString).abbreviatingWithTildeInPath
-        print(string(description, "\n", "    ", function, " ", path, " ", "#", lineNumber))
+        print(string("\n", description, "\n", "    ", function, " ", path, " ", "#", lineNumber))
     }
 }
 
