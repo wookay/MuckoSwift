@@ -5,6 +5,8 @@ Pod::Spec.new do |s|
   s.homepage              = "https://github.com/wookay/MuckoSwift"
   s.license               = "MIT"
   s.author                = { "WooKyoung Noh" => "wookay.noh@gmail.com" }
+  s.pod_target_xcconfig   = { 'SWIFT_VERSION' => '4.2' }
+  s.swift_version         = '4.2'
   s.source                = { :git => "https://github.com/wookay/MuckoSwift.git", :tag => s.version }
   s.source_files          = "Sources/common/**/*.swift"
   s.ios.deployment_target = "8.0"
