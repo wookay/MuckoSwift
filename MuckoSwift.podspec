@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "MuckoSwift"
-  s.version               = "0.1.5"
+  s.version               = "0.1.6"
   s.summary               = "MuckoSwift library"
   s.homepage              = "https://github.com/wookay/MuckoSwift"
   s.license               = "MIT"
