@@ -11,3 +11,8 @@ import Foundation
 public func round(_ typ: Int.Type, _ x: FloatLiteralType) -> Int {
     return Int(x)
 }
+
+public func round(_ x: FloatLiteralType, digits: Int = 0) -> Float64 {
+    let divisor = pow(10.0, Double(digits))
+    return (x * divisor).rounded() / divisor
+}
