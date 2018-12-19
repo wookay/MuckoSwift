@@ -10,6 +10,7 @@ import Foundation
 
 public struct Sys {
     
+    // MARK: isosx
     public static func isosx() -> Bool {
         if #available(macOS 10, *) {
             return true
@@ -18,6 +19,7 @@ public struct Sys {
         }
     }
     
+    // MARK: isios
     public static func isios() -> Bool {
         if #available(iOS 8, *) {
             return true

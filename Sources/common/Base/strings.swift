@@ -8,20 +8,37 @@
 
 import Foundation
 
+// MARK: strip
 public func strip(_ s: String) -> String {
     return s.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 }
 
-public func split(_ str: String, _ dlm: String) -> [String] {
-    return str.components(separatedBy: dlm)
+// MARK: split
+public func split(_ str: String, _ splitter: CharacterSet, keepempty: Bool) -> [String] {
+    let a = str.components(separatedBy: splitter)
+    if keepempty {
+        return a
+    } else {
+        return a.filter { !isempty($0) }
+    }
 }
 
+public func split(_ str: String, keepempty: Bool = false) -> [String] {
+    return split(str, CharacterSet.whitespacesAndNewlines, keepempty: keepempty)
+}
+
+public func split(_ str: String, _ dlm: String, keepempty: Bool = true) -> [String] {
+    return split(str, CharacterSet(charactersIn: dlm), keepempty: keepempty)
+}
+
+// MARK: String
 extension String {
     init(_ x: Any) {
         self.init(describing: x)
     }
 }
 
+// MARK: string
 public func string(_ args: Any...) -> String {
     return join(args)
 }
@@ -30,7 +47,7 @@ public func string(_ args: Any?...) -> String {
     return join(args)
 }
 
-// repr
+// MARK: repr
 public func repr(_ obj: Any?) -> String {
     if let x = obj {
         if isa(x, String.self) {
@@ -44,6 +61,7 @@ public func repr(_ obj: Any?) -> String {
     }
 }
 
+// MARK: isempty
 public func isempty(_ arr: String) -> Bool {
     return arr.count == 0
 }

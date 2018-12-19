@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: parse
 public func parse(_ typ: Int.Type, _ str: String) -> Int {
     return Int(str)!
 }

@@ -9,6 +9,7 @@
 public struct MethodError: Error {
 }
 
+// MARK: getfield
 public func getfield(_ obj: Any, _ name: String) -> Any {
     let m = Mirror(reflecting: obj)
     return m.children.first { $0.label == name }?.value as Any
