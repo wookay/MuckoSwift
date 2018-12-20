@@ -85,9 +85,7 @@ public class Assertion {
             }
         }
     }
-    
 
-    
     public func equal(_ value1: [String: Any], _ value2: [String: Any], _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
         _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
             if value1 == value2 {

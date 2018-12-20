@@ -67,7 +67,7 @@ public class UnitTest {
             print(string(String(repeating: "🚨", count: failed), " "), terminator: "")
         } else if passed > 0 {
             print(ansi_green)
-            print("✅ ", terminator: "")
+            print("✅", terminator: "")
         }
         print(String(format: "%d tests, %d assertions, %d failures, %d errors",
             tests, passed, failed, errors))
