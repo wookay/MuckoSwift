@@ -11,6 +11,12 @@ import Foundation
 open class WTestCaseProvider: NSObject {
 }
 
+// [String: Any] == [String: Any]
+func == <K, V>(left: [K:V?], right: [K:V?]) -> Bool {
+    guard let left = left as? [K: V], let right = right as? [K: V] else { return false }
+    return NSDictionary(dictionary: left).isEqual(to: right)
+}
+
 open class WTestCase : WTestCaseProvider {
     func setUp() {
     }
@@ -71,6 +77,18 @@ public class Assertion {
     }
     
     public func equal(_ value1: Any.Type, _ value2: Any.Type, _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
+        _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
+            if value1 == value2 {
+                return .success
+            } else {
+                return .expectedFailure(string(repr(value1), " != ", repr(value2)))
+            }
+        }
+    }
+    
+
+    
+    public func equal(_ value1: [String: Any], _ value2: [String: Any], _ message: @autoclosure () -> String = "", file: StaticString = #file, function: String = #function, line: UInt = #line) {
         _XCTEvaluateAssertion(.equal, message: message, file: file, function: function, line: line) {
             if value1 == value2 {
                 return .success
