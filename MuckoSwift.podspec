@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.resources             = "MuckoSwift.podspec"
   s.ios.deployment_target = "8.0"
   s.ios.source_files      = "Sources/ios/*.{h,swift}"
-  s.osx.deployment_target = "10.10"
+  s.osx.deployment_target = "10.12"
   s.osx.source_files      = "Sources/osx/*.{h,swift}"
 end
