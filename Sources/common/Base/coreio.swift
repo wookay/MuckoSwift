@@ -7,6 +7,13 @@
 //
 
 // MARK: println
-public func println(_ args: Any...) {
-    print(join(args), "\n")
+public func println(_ args: Any?...) {
+    for arg in args {
+        if let x = arg {
+            print(x)
+        } else {
+            print(typeof(arg))
+        }
+    }
+    print("\n")
 }
