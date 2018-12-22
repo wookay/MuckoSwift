@@ -26,3 +26,7 @@ extension Data {
         }
     }
 }
+
+public func length(_ data: Data) -> Int {
+    return data.count
+}
