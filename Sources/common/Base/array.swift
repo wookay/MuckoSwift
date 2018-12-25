@@ -27,14 +27,13 @@ public func isempty(_ tup: Void) -> Bool {
     return true
 }
 
-// MARK: pushI
-public func pushI<T>(_ a: inout Array<T>, _ item: T) -> Array<T> {
-    a.append(item)
-    return a
-}
+// MARK: pushI appendI
+extension Array {
+    public mutating func pushI(_ item: Element) {
+        self.append(item)
+    }
 
-// MARK: appendI
-public func appendI<T>(_ a: inout Array<T>, _ items: Array<T>) -> Array<T> {
-    a.append(contentsOf: items)
-    return a
+    public mutating func appendI(_ items: [Element]) {
+        self.append(contentsOf: items)
+    }
 }

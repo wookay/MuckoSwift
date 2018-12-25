@@ -36,6 +36,11 @@ extension String {
     init(_ x: Any) {
         self.init(describing: x)
     }
+
+    public init(selector: Selector) {
+        let s = NSStringFromSelector(selector)
+        self.init(describing: s)
+    }
 }
 
 // MARK: string
